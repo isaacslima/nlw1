@@ -9,7 +9,9 @@ const users = [
 ];
 
 app.get('/users', (request, response) => {
-  console.log('Listagem de usuários');
+  const search = String(request.query.search);
+
+  const filteredUsers = search ? users.filter(user => users.includes(search)) : users;
 
   response.json(users);
 });
